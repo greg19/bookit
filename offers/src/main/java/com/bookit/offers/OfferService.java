@@ -2,11 +2,10 @@ package com.bookit.offers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-
-
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -42,14 +41,12 @@ public class OfferService {
                 .map(offer -> modelMapper.map(offer, OfferDTO.class)).collect(Collectors.toList());
     }
 
-
-    //TODO Naprawić, usunąć zhardkodowany adres url
     public List<OfferDTO> searchOffers(Date checkin, Date checkout) {
         WebClient client = WebClient.create();
-        List<String> ids = client.get().uri(uriBuilder -> uriBuilder.path("localhost:8081/search")
+        List <String> ids = client.get().uri(uriBuilder -> uriBuilder.path(env.getProperty("reservations.url.search"))
                 .queryParam("checkin", dateFormat.format(checkin))
                 .queryParam("checkout", dateFormat.format(checkout)).build()).retrieve()
-                .bodyToFlux(String.class).collectList().block();
+                .bodyToMono(new ParameterizedTypeReference<List<String>>(){}).block();
         return offerRepository.findByIdIsNotIn(ids).stream()
                 .map(offer -> modelMapper.map(offer, OfferDTO.class)).collect(Collectors.toList());
     }
