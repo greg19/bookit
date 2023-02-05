@@ -17,13 +17,14 @@ public class Offer {
     private String id;
 
     @NonNull
+    private String name;
+
+    @NonNull
     private String address;
 
     private String description;
 
     @NonNull
     private String email;
-
-    //TODO może zdjęcie?
 
 }

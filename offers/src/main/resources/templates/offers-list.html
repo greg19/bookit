@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BookIT - Offers</title>
+    <link th:href="@{/css/offers-list.css}" rel="stylesheet" type="text/css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-title">BookIT</h2>
+        <h2 th:text="'Offers available between ' + ${param.checkin} + ' and ' + ${param.checkout}"></h2>
+        <div class="offer-list">
+            <div th:each="offer : ${offers}">
+                <h3 th:text="${offer.name}" />
+                <p th:text="'Address: '  + ${offer.address}" />
+                <div>
+                    <img class="image" th:src="@{/images/image.jpg}" />
+                    <p th:text="${offer.description}" />
+                    <a th:href="@{'/offer/' + ${offer.id}}">
+                        <button class="link-button"> Show offer </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

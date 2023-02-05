@@ -13,6 +13,8 @@ public class OfferDTO {
 
     private String id;
 
+    private String name;
+
     private String address;
 
     private String description;

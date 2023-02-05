@@ -1,0 +1,20 @@
+.container .form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    float: left;
+    margin-right: 1em;
+}
+
+.offer-list {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 900px;
+}
+
+.form-input {
+    width: 40%;
+}

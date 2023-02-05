@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
@@ -18,7 +18,7 @@ public class AppController {
     private ReservationService reservationService;
 
     @PostMapping("/")
-    public ResponseEntity<?> addReservation(@RequestBody ReservationDTO reservationDTO) {
+    public ResponseEntity<?> addReservation(Model model, ReservationDTO reservationDTO) {
         return ResponseEntity.ok(reservationService.addReservation(reservationDTO));
     }
 
