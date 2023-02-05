@@ -25,7 +25,7 @@ public class AppController {
     @GetMapping("/paid/{id}")
     public String confirmPayment(@PathVariable String id) {
         WebClient client = WebClient.create();
-        var x = client.get().uri(uriBuilder -> uriBuilder.path("localhost:8081/paid/" + id)
+        var x = client.get().uri(uriBuilder -> uriBuilder.path(env.getProperty("reservations.url.paid") + id)
                 .build()).retrieve().toBodilessEntity().map(response -> response.getStatusCode()).block();
         log.info("Status: {}", x);
         return "paid";

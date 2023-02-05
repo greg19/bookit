@@ -10,7 +10,7 @@
     + ${reservation.checkin}
     + ' to ' + ${reservation.checkout} +':'"/>
     <h1 th:text="${isPaid} ? 'PAID' : 'NOT YET PAID'" />
-    <a href="?">
+    <a th:if="${!isPaid}" th:href="@{${payUrl + reservation.id}}" th:target="_blank">
         <button> Pay for booking </button>
     </a>
     <a href="?">

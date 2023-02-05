@@ -27,9 +27,8 @@ public class AppController {
     @PostMapping("/")
     public ResponseEntity<?> addReservation(Model model, ReservationDTO reservationDTO) {
         String id = reservationService.addReservation(reservationDTO);
-        //przekieruj do status siebie
         return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create("http://localhost:8082/pay/" + id)).build();
+                .location(URI.create(env.getProperty("payments.url.pay") + id)).build();
     }
 
     @GetMapping("/paid/{id}")
@@ -42,6 +41,7 @@ public class AppController {
     public String getStatus(@PathVariable String id, Model model) {
         model.addAttribute("isPaid", reservationService.getStatus(id));
         model.addAttribute("reservation", reservationService.getReservation(id));
+        model.addAttribute("payUrl", "http://" + env.getProperty("payments.url.pay"));
         return "status";
     }
 
