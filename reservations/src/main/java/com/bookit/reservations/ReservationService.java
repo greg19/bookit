@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,6 +19,7 @@ public class ReservationService {
 
     public String addReservation(ReservationDTO reservationDTO) {
         Reservation reservation = modelMapper.map(reservationDTO, Reservation.class);
+        reservation.setPaid(false);
         return reservationRepository.save(reservation).getId();
     }
 
@@ -25,5 +27,19 @@ public class ReservationService {
     public List<String> searchReservations(Date start, Date end) {
         return reservationRepository.findReservationsByCheckoutAfterAndCheckinBefore(start, end)
                 .stream().map((Reservation::getOfferId)).distinct().collect(Collectors.toList());
+    }
+
+    public boolean getStatus(String id) {
+        return reservationRepository.findById(id).orElseThrow(NoSuchElementException::new).isPaid();
+    }
+
+    public Reservation getReservation(String id) {
+        return reservationRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
+
+    public void markAsPaid(String id) {
+        Reservation reservation = reservationRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        reservation.setPaid(true);
+        reservationRepository.save(reservation);
     }
 }

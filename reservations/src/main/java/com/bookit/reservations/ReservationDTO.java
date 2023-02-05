@@ -18,6 +18,8 @@ public class ReservationDTO {
 
     private String offerId;
 
+    private boolean isPaid;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkin;
 

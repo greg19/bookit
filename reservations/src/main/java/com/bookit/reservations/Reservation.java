@@ -23,6 +23,9 @@ public class Reservation {
     private String offerId;
 
     @NonNull
+    private boolean isPaid;
+
+    @NonNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkin;
 
