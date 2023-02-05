@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BookIT - main page</title>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+<div class="container">
+    <h2 class="page-title">BookIT</h2>
+    <div class="search-bar">
+        <h3>Search available offers</h3>
+        <form action="#" th:action="@{/search}" method="get">
+                <span class="form-input">
+                    <label for="checkin">Check-in date:</label>
+                    <input type="date" th:name="checkin" id="checkin" name="checkin" required />
+                </span>
+                <span class="form-input">
+                    <label for="checkout">Check-out date:</label>
+                    <input type="date" th:name="checkout" id="checkout" name="checkout" required />
+                </span>
+            <input class="search-button" type="submit" value="Search">
+        </form>
+    </div>
+    <div class="add-offer">
+        <h3>Add new accommodation offer</h3>
+        <form action="#" th:action="@{/add}" th:object="${offer}" id="add-form" method="post">
+                <span class="form-input">
+                    <label for="name">Offer name:</label>
+                    <input type="text" th:field="*{name}" id="name" name="name" required />
+                </span>
+                <span class="form-input">
+                    <label for="address">Address:</label>
+                    <input type="text" th:field="*{address}" id="address" name="address" required />
+                </span>
+                <span class="form-input">
+                    <label for="email">Your email:</label>
+                    <input type="email" th:field="*{email}" id="email" name="email" required />
+                </span>
+                <span class="form-input">
+                    <label>Description:</label>
+                    <textarea form="add-form" th:field="*{description}" id="desc" name="desc"> </textarea>
+                </span>
+                <input type="submit" value="Add" />
+        </form>
+    </div>
+</div>
+</body>
+</html>

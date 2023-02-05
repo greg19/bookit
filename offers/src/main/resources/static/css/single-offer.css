@@ -1,0 +1,22 @@
+.container .form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    float: left;
+    margin-right: 1em;
+}
+
+.form-input {
+    width: 40%;
+}
+#book-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+}
+
+.submit-button {
+    width: max-content;
+}

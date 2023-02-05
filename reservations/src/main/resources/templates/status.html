@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BookIT - Offer booking status</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h2>BookIT - Offer booking status</h2>
+    <p th:text="'Status of your booking from '
+    + ${reservation.checkin}
+    + ' to ' + ${reservation.checkout} +':'"/>
+    <h1 th:text="${isPaid} ? 'PAID' : 'NOT YET PAID'" />
+    <a th:if="${!isPaid}" th:href="@{${payUrl + reservation.id}}" th:target="_blank">
+        <button> Pay for booking </button>
+    </a>
+    <a href="?">
+        <button> Refresh status page </button>
+    </a>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.container .form-input {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+}
+.form-input {
+    width: max-content;
+}
+.search-button {
+    margin: 0.5em;
+}
