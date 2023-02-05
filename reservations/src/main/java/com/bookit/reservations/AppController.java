@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.net.URI;
 import java.util.Date;
@@ -25,10 +26,9 @@ public class AppController {
     private Environment env;
 
     @PostMapping("/")
-    public ResponseEntity<?> addReservation(Model model, ReservationDTO reservationDTO) {
+    public RedirectView addReservation(ReservationDTO reservationDTO) {
         String id = reservationService.addReservation(reservationDTO);
-        return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create(env.getProperty("payments.url.pay") + id)).build();
+        return new RedirectView("/status/" + id);
     }
 
     @GetMapping("/paid/{id}")
@@ -41,7 +41,7 @@ public class AppController {
     public String getStatus(@PathVariable String id, Model model) {
         model.addAttribute("isPaid", reservationService.getStatus(id));
         model.addAttribute("reservation", reservationService.getReservation(id));
-        model.addAttribute("payUrl", "http://" + env.getProperty("payments.url.pay"));
+        model.addAttribute("payUrl", env.getProperty("payments.url.pay"));
         return "status";
     }
 
