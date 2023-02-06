@@ -4,23 +4,26 @@
     <title>BookIT - Offers</title>
     <link th:href="@{/css/offers-list.css}" rel="stylesheet" type="text/css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
 </head>
 <body>
     <div class="container">
-        <h2 class="page-title">BookIT</h2>
-        <h2 th:text="'Offers available between ' + ${param.checkin} + ' and ' + ${param.checkout}"></h2>
+        <h2 class="page-title">
+            <span class="material-icons-round"> hotel </span>
+            BookIT
+        </h2>
+        <h2 th:text="'Offers available between ' + ${param.checkin} + ' and ' + ${param.checkout}+':'"></h2>
         <div class="offer-list">
-            <div th:each="offer : ${offers}">
+            <div class="offer" th:each="offer : ${offers}">
                 <h3 th:text="${offer.name}" />
                 <p th:text="'Address: '  + ${offer.address}" />
                 <div>
                     <img class="image" th:src="@{/images/image.jpg}" />
                     <p th:text="${offer.description}" />
-                    <a th:href="@{'/offer/' + ${offer.id}}">
-                        <button class="link-button"> Show offer </button>
-                    </a>
                 </div>
+                <a class="link" th:href="@{'/offer/' + ${offer.id}}">
+                    <button class="link-button"> Show offer </button>
+                </a>
             </div>
         </div>
     </div>

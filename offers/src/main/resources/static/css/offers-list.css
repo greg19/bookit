@@ -1,11 +1,14 @@
-.container .form-input {
+.container {
     display: flex;
     flex-direction: column;
+    row-gap: 0.5em;
+    align-items: center;
 }
 
 .image {
     float: left;
     margin-right: 1em;
+    width: 400px;
 }
 
 .offer-list {
@@ -17,4 +20,49 @@
 
 .form-input {
     width: 40%;
+}
+
+html {
+    background-image: url(../images/memphis-mini.png);
+    font-family: 'Cabin', sans-serif;
+    color: #36393B;
+}
+
+.offer {
+    background-color: #ececec65;
+    padding: 1em;
+    margin: 1.25em;
+    position: relative;
+}
+
+.link-button {
+    background-color: #006E74;
+    border: none;
+    color: #faf9f9;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1em;
+}
+
+.link-button:hover{
+    color: #faf9f9;
+    background-color: #00949C;
+}
+
+.link {
+    position:absolute;
+    bottom:0;
+    right:0;
+    margin-top: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+h3 {
+    color: #00949C;
+}
+
+h2 {
+    color: #006E74;
 }

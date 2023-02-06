@@ -1,11 +1,52 @@
-.container .form-input {
+.container, .form-input{
     display: flex;
     flex-direction: column;
     row-gap: 0.5em;
 }
+
+.container {
+    align-items: center;
+}
 .form-input {
     width: max-content;
 }
-.search-button {
-    margin: 0.5em;
+html {
+    background-image: url(../images/memphis-mini.png);
+    font-family: 'Cabin', sans-serif;
+    color: #36393B;
+}
+
+h3 {
+    color: #00949C;
+}
+
+h2 {
+    color: #006E74;
+}
+
+.submit-button {
+    background-color: #006E74;
+    border: none;
+    color: #faf9f9;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1em;
+}
+
+.submit-button:hover{
+    color: #faf9f9;
+    background-color: #00949C;
+}
+
+form {
+    background-color: #ececec65;
+    padding: 1em;
+}
+.page-title {
+    text-align: center;
+}
+.search-bar, .add-offer {
+    width: 60%;
 }

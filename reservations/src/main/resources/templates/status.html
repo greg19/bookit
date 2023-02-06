@@ -3,18 +3,30 @@
 <head>
     <title>BookIT - Offer booking status</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/status.css}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
 </head>
 <body>
-    <h2>BookIT - Offer booking status</h2>
-    <p th:text="'Status of your booking from '
-    + ${reservation.checkin}
-    + ' to ' + ${reservation.checkout} +':'"/>
-    <h1 th:text="${isPaid} ? 'PAID' : 'NOT YET PAID'" />
-    <a th:if="${!isPaid}" th:href="@{${payUrl + reservation.id}}" th:target="_blank">
-        <button> Pay for booking </button>
-    </a>
-    <a href="?">
-        <button> Refresh status page </button>
-    </a>
+    <div class="container">
+        <h2 class="page-title">
+            <span class="material-icons-round"> hotel </span>
+            BookIT
+        </h2>
+        <h3>Offer booking status</h3>
+        <div class="status-panel">
+            <p th:text="'Status of your booking from '
+            + ${reservation.checkin}
+            + ' to ' + ${reservation.checkout} +':'"/>
+            <h1 class="status" th:text="${isPaid} ? 'PAID' : 'NOT YET PAID'" />
+        </div>
+        <div class="buttons-panel">
+            <a th:if="${!isPaid}" th:href="@{${payUrl + reservation.id}}" th:target="_blank">
+                <button class="link-button"> Pay for booking </button>
+            </a>
+            <a href="?">
+                <button class="link-button"> Refresh status page </button>
+            </a>
+        </div>
+    </div>
 </body>
 </html>
