@@ -1,0 +1,53 @@
+html {
+    background-image: url(../images/memphis-mini.png);
+    font-family: 'Cabin', sans-serif;
+    color: #36393B;
+}
+.link-button {
+    background-color: #006E74;
+    border: none;
+    color: #faf9f9;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1em;
+}
+
+.link-button:hover{
+    color: #faf9f9;
+    background-color: #00949C;
+}
+
+a:link, a:hover { text-decoration: none; }
+
+h3 {
+    color: #00949C;
+}
+
+h2 {
+    color: #006E74;
+}
+
+.container, .status-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status-panel, .buttons-panel {
+    width: 60%;
+    background: #ececec65;
+}
+.status-panel {
+    padding: 1em 1em 0 1em;
+}
+.buttons-panel {
+    padding: 0 1em 2em 1em;
+}
+
+.buttons-panel {
+    display: flex;
+    justify-content: center;
+    column-gap: 1em;
+}

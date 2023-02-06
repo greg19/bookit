@@ -4,32 +4,39 @@
     <title>BookIT</title>
     <link th:href="@{/css/single-offer.css}" rel="stylesheet" type="text/css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
 </head>
 <body>
-<h3 th:text="${offer.name}" />
-<p th:text="'Address: '  + ${offer.address}" />
-<div>
-    <img class="image" th:src="@{/images/image.jpg}" />
-    <p th:text="${offer.description}" />
-</div>
-<div class="book">
-    <h3>Book this accommodation</h3>
-    <form action="#" th:action="@{${addReservation}}" th:object="${reservationDTO}" id="book-form" method="post">
-                <input type="hidden" th:data="${offer.id}" th:field="*{offerId}">
-                <span class="form-input">
-                    <label for="checkin">Check-in date:</label>
-                    <input type="date" th:field="*{checkin}" id="checkin" name="checkin" required />
-                </span>
-                <span class="form-input">
-                    <label for="checkout">Check-out date:</label>
-                    <input type="date" th:field="*{checkout}" id="checkout" name="checkout" required />
-                </span>
-                <span class="form-input">
-                    <label for="email">Your email:</label>
-                    <input type="email" th:field="*{email}" id="email" name="email" required />
-                </span>
-        <input class="submit-button" type="submit" value="BookIT" />
-    </form>
+<div class="container">
+    <h2 class="page-title">
+        <span class="material-icons-round"> hotel </span>
+        BookIT
+    </h2>
+    <div class="offer">
+        <h3 th:text="${offer.name}" />
+        <p th:text="'Address: '  + ${offer.address}" />
+        <img class="image" th:src="@{/images/image.jpg}" />
+        <p th:text="${offer.description}" />
+    </div>
+    <div class="book">
+        <h3>Book this accommodation</h3>
+        <form action="#" th:action="@{${addReservation}}" th:object="${reservationDTO}" id="book-form" method="post">
+                    <input type="hidden" th:data="${offer.id}" th:field="*{offerId}">
+                    <span class="form-input">
+                        <label for="checkin">Check-in date:</label>
+                        <input type="date" th:field="*{checkin}" id="checkin" name="checkin" required />
+                    </span>
+                    <span class="form-input">
+                        <label for="checkout">Check-out date:</label>
+                        <input type="date" th:field="*{checkout}" id="checkout" name="checkout" required />
+                    </span>
+                    <span class="form-input">
+                        <label for="email">Your email:</label>
+                        <input type="email" th:field="*{email}" id="email" name="email" required />
+                    </span>
+            <input class="submit-button" type="submit" value="BookIT" />
+        </form>
+    </div>
 </div>
 </body>
 </html>
