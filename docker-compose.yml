@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+
+  offers-db:
+    image: mongo:latest
+    expose:
+      - 27017
+    restart: always
+    volumes:
+      - ./volumes/offers/data:/data/db
+
+  offers:
+    build: ./offers
+    expose:
+      - 8080
+    depends_on:
+      - offers-db
+
+  reservations-db:
+    image: mongo:latest
+    expose:
+      - 27017
+    restart: always
+    volumes:
+      - ./volumes/reservations/data:/data/db
+
+  reservations1: &reservations
+    build: ./reservations
+    expose:
+      - 8080
+    depends_on:
+      - reservations-db
+  reservations2:
+    <<: *reservations
+  reservations3:
+    <<: *reservations
+
+  payments:
+    build: ./payments
+    expose:
+      - 8080
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - offers
+      - reservations1
+      - reservations2
+      - reservations3
+      - payments
+    ports:
+      - 80:80
